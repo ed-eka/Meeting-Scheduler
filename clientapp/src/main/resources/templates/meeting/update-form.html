@@ -1,0 +1,301 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout">
+<head layout:include="fragment/head.html::custom-head">
+  <!--Data Tabels-->
+  <!-- <link
+    rel="stylesheet"
+    href="https://cdn.datatables.net/1.13.6/css/jquery.dataTables.css"
+  /> -->
+
+  <!-- Jquery -->
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.7.1/jquery.min.js"></script>
+
+  <!-- USING Select2 for add Multi select employee -->
+  <link
+          href="https://cdn.jsdelivr.net/npm/select2@4.1.0-rc.0/dist/css/select2.min.css"
+          rel="stylesheet"
+  />
+</head>
+
+<body>
+<div class="box">
+  <div class="main-container">
+    <form
+            class="content-form"
+            th:action="@{'/meeting/' + ${meetingRequest.id}}"
+            th:method="PUT"
+            th:object="${meetingRequest}"
+    >
+      <label for="title">Title</label>
+      <input
+              type="text"
+              id="title"
+              th:field="*{title}"
+              th:value="${meetingResponse.title}"
+              class="mb-3"
+              required
+      />
+
+      <label for="description-meeting"> Meeting Desctription</label>
+      <textarea
+              th:field="*{description}"
+              th:value="${meetingResponse.description}"
+              id="description-meeting"
+              cols="30"
+              rows="5"
+              class="mb-3"
+      ></textarea>
+
+      <label for="timestart">Start Time (DD-MM-YYYY HH:MM:SS)</label>
+      <input
+              th:field="*{dateTimeStart}"
+              th:value="${meetingResponse.dateTimeStart}"
+              type="text"
+              id="timestart"
+              name="timestart"
+              pattern="\d{2}-\d{2}-\d{4} \d{2}:\d{2}:\d{2}"
+              class="mb-3"
+              required
+      />
+
+      <label for="timeEnd">End Time (DD-MM-YYYY HH:MM:SS)</label>
+      <input
+              th:field="*{dateTimeEnd}"
+              th:value="${meetingResponse.dateTimeEnd}"
+              type="text"
+              id="timeEnd"
+              name="timeEnd"
+              pattern="\d{2}-\d{2}-\d{4} \d{2}:\d{2}:\d{2}"
+              class="mb-3"
+              required
+      />
+
+      <legend>Meeting place</legend>
+      <div class="flex">
+        <div class="checkbox">
+          <input type="checkbox" id="online" name="online" />
+          <label for="online">Online</label>
+        </div>
+
+        <div class="checkbox">
+          <input type="checkbox" id="offline" name="offline" />
+          <label for="offline">Offline</label>
+        </div>
+      </div>
+      <br />
+
+      <label for="url" id="urlLabel" style="display: none"
+      >Meeting link</label
+      >
+      <input
+              th:field="*{link}"
+              th:value="${meetingResponse.link}"
+              type="url"
+              name="url"
+              id="url"
+              class="mb-3"
+              style="display: none"
+              required
+      />
+
+      <label for="room" id="venueLabel" style="display: none"
+      >Meeting Venue</label
+      >
+      <input
+              th:field="*{venue_id}"
+              th:value="${meetingResponse.venue_id}"
+              type="text"
+              name="room"
+              id="room"
+              class="mb-3"
+              style="display: none"
+              required
+      />
+
+      <div class="mb-3">
+        <label for="states[]">Participants</label>
+        <!-- List Participant -->
+        <select
+                class="js-example-basic-multiple"
+                name="states[]"
+                multiple="multiple"
+                style="width: 100%"
+                th:field="*{initiator_id}"
+        >
+          <th:each ="invitations : ${meetingResponse.invitations}">
+          <option
+                  th:value="${invitations.id}"
+                  th:text="${invitations.name}"
+          ></option>
+          </th:each>
+        </select>
+      </div>
+
+      <div class="mb-3">
+        <label for="states[]">Add Other Employee</label>
+        <select
+                class="js-example-basic-multiple"
+                name="states[]"
+                multiple="multiple"
+                style="width: 100%"
+                th:field="*{initiator_id}"
+        >
+          <option value="id">name</option>
+        </select>
+      </div>
+
+      <div id="participant-container">
+        <!-- Akan berisi Inputan dari participant (nama, email, phone) -->
+      </div>
+      <!-- Button untuk tambah participant -->
+      <input
+              type="button"
+              value="Add New Participant"
+              onclick="addParticipant()"
+              class="mb-3"
+      />
+
+      <input type="submit" value="Update Meeting" />
+    </form>
+  </div>
+
+  <div class="calendar-container">
+    <div id="calendar-meeting">
+      <div class="calendar-header">
+        <a href="#" id="prevMonth" class="calendar-icon"
+        ><i class="fas fa-chevron-left"></i
+        ></a>
+        <h2 id="currentMonthYear"></h2>
+        <a href="#" id="nextMonth" class="calendar-icon"
+        ><i class="fas fa-chevron-right"></i
+        ></a>
+      </div>
+      <table class="calendar-table">
+        <!-- Tampilkan hari-hari dalam satu minggu -->
+        <tr class="calendar-day">
+          <th>Sun</th>
+          <th>Mon</th>
+          <th>Tue</th>
+          <th>Wed</th>
+          <th>Thu</th>
+          <th>Fri</th>
+          <th>Sat</th>
+        </tr>
+        <!-- Isi kalender akan ditampilkan di sini -->
+      </table>
+    </div>
+  </div>
+</div>
+
+<!-- JS untuk memunculkan input url atau venue -->
+<script>
+      document.getElementById("online").addEventListener("change", function () {
+        const urlLabel = document.getElementById("urlLabel");
+        const urlInput = document.getElementById("url");
+        if (this.checked) {
+          urlLabel.style.display = "block";
+          urlInput.style.display = "block";
+          urlInput.required = true; // Menjadikan input wajib diisi
+        } else {
+          urlLabel.style.display = "none";
+          urlInput.style.display = "none";
+          urlInput.required = false; // Mencabut kewajiban input
+        }
+      });
+
+      document
+        .getElementById("offline")
+        .addEventListener("change", function () {
+          const venueLabel = document.getElementById("venueLabel");
+          const venueInput = document.getElementById("room");
+          if (this.checked) {
+            venueLabel.style.display = "block";
+            venueInput.style.display = "block";
+            venueInput.required = true; // Menjadikan input wajib diisi
+          } else {
+            venueLabel.style.display = "none";
+            venueInput.style.display = "none";
+            venueInput.required = false; // Mencabut kewajiban input
+          }
+        });
+
+      <!-- Javascript untuk button add participant -->
+      let participantIndex = 0;
+
+      function addParticipant() {
+        const participantContainer = document.getElementById(
+          "participant-container"
+        );
+
+        // Buat elemen input untuk peserta
+        const newParticipant = document.createElement("div");
+        newParticipant.innerHTML = `
+                <div class="add-participant mb-3">
+                  <label for="name">Participant name
+                    <input type="text" name="participants[${participantIndex}].name" placeholder="Participant name" required />
+                  </label>
+
+                  <label for="email">Email
+                    <input type="email" name="participants[${participantIndex}].email" placeholder="Participant email" required />
+                  </label>
+
+                  <label for="phone">Phone (081x-xxxx-xxxx)
+                    <input type="tel" name="participants[${participantIndex}].phone" pattern="[0-9]{4}-[0-9]{4}-[0-9]{4}" placeholder="Participant number" required />
+                  </label>
+
+                  <input type="button" value="X" class="delete-btn" onclick="removeParticipant(this)" />
+              </div>
+            `;
+
+        // Untuk menambahkan peserta ke dalam kontainer
+        participantContainer.appendChild(newParticipant);
+
+        participantIndex++;
+      }
+
+      function removeParticipant(deleteButton) {
+        const participant = deleteButton.parentElement;
+        participant.remove();
+      }
+
+      // JS untuk Select 2 employee
+      $(document).ready(function () {
+        $(".js-example-basic-multiple").select2();
+      });
+    </script>
+
+<!--Menambahkan Liblary JQuery CDN-->
+<script src="/clientapp/src/main/resources/static/js/calendarMeeting.js"></script>
+
+<script
+        src="https://code.jquery.com/jquery-3.7.1.js"
+        integrity="sha256-eKhayi8LEQwp4NKxN+CfCh+3qOVUtJn3QNZ0TciWLP4="
+        crossorigin="anonymous"
+></script>
+<script
+        src="https://kit.fontawesome.com/a41c16aeaf.js"
+        crossorigin="anonymous"
+></script>
+
+<!--Data Tables CDN-->
+<script src="https://cdn.datatables.net/1.13.6/js/jquery.dataTables.js"></script>
+
+<!-- Optional JavaScript; choose one of the two! -->
+
+<!-- Option 1: Bootstrap Bundle with Popper -->
+<script
+        src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js"
+        integrity="sha384-MrcW6ZMFYlzcLA8Nl+NtUVF0sA7MsXsP1UyJoMp4YLEuNSfAP+JcXn/tWtIaxVXM"
+        crossorigin="anonymous"
+></script>
+
+<!--SweatAlert CDN-->
+<script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+
+<script th:src="@{/js/meeting.js}"></script>
+<script th:src="@{/js/addCsrfToken.js}"></script>
+
+<!-- USING Select2 for add Multi select employee -->
+<script src="https://cdn.jsdelivr.net/npm/select2@4.1.0-rc.0/dist/js/select2.min.js"></script>
+</body>
+</html>

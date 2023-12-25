@@ -1,0 +1,30 @@
+body {
+  margin-top: 7%;
+  background: linear-gradient(180deg, rgba(206, 188, 238, 0.56) 58%, rgba(192.96, 170.24, 234.81, 0) 100%);
+  max-width: 100%;
+}
+
+#lineChartMonth,
+#chartRoomAdmin {
+  background: white;
+  border-radius: 18px;
+  padding: 20px;
+  margin-top: 15px;
+}
+
+#pieChartOnline {
+  border-radius: 18px;
+  padding: 15px;
+  background: #fdf7c3;
+}
+
+#pieChartStatus {
+  border-radius: 18px;
+  padding: 15px;
+  background: #c0deff;
+}
+#lineChartStatus {
+  border-radius: 18px;
+  padding: 10px;
+  background: #f5cbcb;
+}

@@ -1,0 +1,112 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout">
+
+<head layout:include="fragment/head.html::custom-head">
+  <!--Data Tabels-->
+  <!-- <link
+      rel="stylesheet"
+      href="https://cdn.datatables.net/1.13.6/css/jquery.dataTables.css"
+    /> -->
+</head>
+
+<body>
+  <div class="box">
+    <div class="main-container">
+      <div class="meeting-detail-box grid-container">
+        <div class="grid-item fw-bold">Meeting ID</div>
+        <div class="grid-item">:</div>
+        <div class="grid-item" th:text="${meetingResponse.id}"></div>
+
+        <div class="grid-item fw-bold">Meeting Status</div>
+        <div class="grid-item">:</div>
+        <div class="grid-item" th:text="${meetingResponse.status.name}"></div>
+
+        <div class="grid-item fw-bold">Title</div>
+        <div class="grid-item">:</div>
+        <div class="grid-item" th:text="${meetingResponse.title}"></div>
+
+        <div class="grid-item fw-bold">Description</div>
+        <div class="grid-item">:</div>
+        <div class="grid-item" th:text="${meetingResponse.description}"></div>
+
+        <div class="grid-item fw-bold">Start Time</div>
+        <div class="grid-item">:</div>
+        <div class="grid-item" th:text="${meetingResponse.dateTimeStart}"></div>
+
+        <div class="grid-item fw-bold">End Time</div>
+        <div class="grid-item">:</div>
+        <div class="grid-item" th:text="${meetingResponse.dateTimeEnd}"></div>
+
+        <div class="grid-item full-width fw-bold">Meeting Place</div>
+
+        <div class="grid-item ps-5">URL</div>
+        <div class="grid-item">:</div>
+        <div class="grid-item" th:text="${meetingResponse.link}"></div>
+
+        <div class="grid-item ps-5">Venue</div>
+        <div class="grid-item">:</div>
+        <div class="grid-item" th:text="${meetingResponse.venue.name}"></div>
+
+        <div class="grid-item fw-bold">Meeting Creator</div>
+        <div class="grid-item">:</div>
+        <div class="grid-item" th:text="${meetingResponse.initiator.name}"></div>
+
+        <div class="grid-item full-width fw-bold">Participant</div>
+
+        <div class="grid-item full-width participant-name-status" th:each="invitation : ${meetingResponse.invitations}">
+          <div class="participant-name" th:text="${invitation.participant.name}"></div>
+          <div>:</div>
+          <div th:text="${invitation.status.name}"></div>
+        </div>
+      </div>
+    </div>
+
+    <div class="calendar-container">
+      <div id="calendar-meeting">
+        <div class="calendar-header">
+          <a href="#" id="prevMonth" class="calendar-icon"><i class="fas fa-chevron-left"></i></a>
+          <h2 id="currentMonthYear"></h2>
+          <a href="#" id="nextMonth" class="calendar-icon"><i class="fas fa-chevron-right"></i></a>
+        </div>
+        <table class="calendar-table">
+          <!-- Tampilkan hari-hari dalam satu minggu -->
+          <tr class="calendar-day">
+            <th>Sun</th>
+            <th>Mon</th>
+            <th>Tue</th>
+            <th>Wed</th>
+            <th>Thu</th>
+            <th>Fri</th>
+            <th>Sat</th>
+          </tr>
+          <!-- Isi kalender akan ditampilkan di sini -->
+        </table>
+      </div>
+    </div>
+  </div>
+
+  <!--Menambahkan Liblary JQuery CDN-->
+  <script src="/clientapp/src/main/resources/static/js/calendarMeeting.js"></script>
+
+  <script src="https://code.jquery.com/jquery-3.7.1.js" integrity="sha256-eKhayi8LEQwp4NKxN+CfCh+3qOVUtJn3QNZ0TciWLP4="
+    crossorigin="anonymous"></script>
+  <script src="https://kit.fontawesome.com/a41c16aeaf.js" crossorigin="anonymous"></script>
+
+  <!--Data Tables CDN-->
+  <script src="https://cdn.datatables.net/1.13.6/js/jquery.dataTables.js"></script>
+
+  <!-- Optional JavaScript; choose one of the two! -->
+
+  <!-- Option 1: Bootstrap Bundle with Popper -->
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js"
+    integrity="sha384-MrcW6ZMFYlzcLA8Nl+NtUVF0sA7MsXsP1UyJoMp4YLEuNSfAP+JcXn/tWtIaxVXM"
+    crossorigin="anonymous"></script>
+
+  <!--SweatAlert CDN-->
+  <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+
+  <script th:src="@{/js/meeting.js}"></script>
+  <script th:src="@{/js/addCsrfToken.js}"></script>
+</body>
+
+</html>

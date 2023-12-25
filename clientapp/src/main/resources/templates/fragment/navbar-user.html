@@ -1,0 +1,97 @@
+<header layout:fragment="navbar-user">
+  <!-- Navbar -->
+  <nav class="navbar fixed-top navbar-expand-lg shadow navbar-light bg-light">
+    <!-- Container wrapper -->
+    <div class="container-fluid">
+      <!-- Toggle button -->
+      <button
+        class="navbar-toggler"
+        type="button"
+        data-bs-toggle="collapse"
+        data-bs-target="#navbarMenu"
+        aria-controls="navbarMenu"
+        aria-expanded="false"
+        aria-label="Toggle navigation"
+      >
+        <i class="fas fa-bars"></i>
+      </button>
+      <!-- Navbar brand -->
+      <a class="navbar-brand" th:href="@{/dashboard}"> Meeting Scheduler </a>
+
+      <!-- Collapsible wrapper -->
+      <div class="collapse navbar-collapse justify-content-center" id="navbarMenu">
+        <!-- Left links -->
+        <ul class="navbar-nav mb-2 mb-lg-0 gap-4 mt-3">
+          <li class="nav-item d-flex gap-1 align-items-center" th:classappend="${title == 'Dashboard'} ? 'active' : ''">
+            <i class="fa-solid fa-house fa-lg"></i>
+            <a
+              class="nav-link fw-bold"
+              aria-current="page"
+              th:href="@{/dashboard}"
+              >Dashboard</a
+            >
+          </li>
+          <li class="nav-item d-flex gap-1 align-items-center" th:classappend="${title == 'meeting'} ? 'active' : ''">
+            <i class="fa-solid fa-calendar-days fa-lg"></i>
+            <a class="nav-link fw-bold" th:href="@{/meeting}" >Meeting</a>
+          </li>
+        </ul>
+        <!-- Left links -->
+      </div>
+
+      <!-- Right elements -->
+      <div class="d-flex align-items-center">
+        <!-- Notifications -->
+        <!-- <div class="dropdown">
+                        <a class="text-reset me-3 dropdown-toggle hidden-arrow" href="#" id="navbarDropdownMenuLink"
+                            role="button" data-mdb-toggle="dropdown" aria-expanded="false">
+                            <i class="fas fa-bell"></i>
+                            <span class="badge rounded-pill badge-notification bg-danger">1</span>
+                        </a>
+                        <ul class="dropdown-menu dropdown-menu-end" aria-labelledby="navbarDropdownMenuLink">
+                            <li>
+                                <a class="dropdown-item" href="#">Some news</a>
+                            </li>
+                            <li>
+                                <a class="dropdown-item" href="#">Another news</a>
+                            </li>
+                            <li>
+                                <a class="dropdown-item" href="#">Something else here</a>
+                            </li>
+                        </ul>
+                    </div> -->
+        <!-- Profile -->
+        <div class="dropdown">
+          <a
+            class="btn dropdown-button mt-2 d-flex align-items-center justify-content-center"
+            href="#"
+            role="button"
+            data-bs-toggle="dropdown"
+            aria-expanded="false"
+          >
+            <i class="fa-solid fa-circle-user"></i>
+            <span class="mx-1" sec:authentication="principal">Username</span>
+          </a>
+
+          <ul class="dropdown-menu">
+            <li class="d-flex menu-profile align-items-center">
+              <i class="fa-solid fa-address-card"></i>
+              <a class="dropdown-item" href="#" th:classappend="${title == 'meeting'} ? 'active' : ''">View Profile</a>
+            </li>
+            <li class="d-flex menu-profile align-items-center">
+              <form th:action="@{/logout}" th:method="POST">
+                <button class="btn">
+                  <i class="fa-solid fa-right-from-bracket" style="margin-right: 10px; margin-left: -10px"></i>
+                  Logout
+                </button>
+              </form>
+            </li>
+          </ul>
+        </div>
+      </div>
+      <!-- Right elements -->
+    </div>
+    <!-- Container wrapper -->
+  </nav>
+  <!-- Navbar -->
+</header>

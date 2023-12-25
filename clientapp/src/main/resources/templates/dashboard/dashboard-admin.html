@@ -1,0 +1,102 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout">
+  <head layout:include="fragment/head.html::custom-head">
+    <!-- Calendar -->
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/fullcalendar@5.10.0/main.css" />
+  </head>
+  <body id="body-dashboard">
+    <header layout:replace="fragment/navbar-admin::navbar-admin"></header>
+
+    <!-- Calender & List Schedule -->
+    <section id="dashContent">
+      <div class="d-flex justify-content-around mt-2 mb-2">
+        <div class="col-6">
+          <div class="mb-3 p-4" id="calendar-dashboard">
+            <div id="fullCalendar"></div>
+          </div>
+          <div class="d-flex justify-content-around" id="card-status">
+            <div class="text-center status-item" id="scheduled">
+              <h5>Scheduled</h5>
+              <h5 id="c-scheduled">0</h5>
+            </div>
+            <div class="text-center status-item" id="start">
+              <h5>Start</h5>
+              <h5 id="c-start">0</h5>
+            </div>
+            <div class="text-center status-item" id="end">
+              <h5>End</h5>
+              <h5 id="c-end">0</h5>
+            </div>
+            <div class="text-center status-item" id="canceled">
+              <h5>Canceled</h5>
+              <h5 id="c-canceled">0</h5>
+            </div>
+          </div>
+        </div>
+        <div class="d-flex flex-column col-5" id="card-schedule">
+          <div class="d-flex justify-content-between">
+            <div class="col">
+              <p class="title">Upcoming Schedule</p>
+              <p id="date-now" th:text="${dateNow}"></p>
+            </div>
+            <a href="#">View All</a>
+          </div>
+          <!-- Upcoming Schedule -->
+          <div class="txt-null">-- You don't have any upcoming schedule --</div>
+          <div class="card mb-3" id="cardMeeting"></div>
+          <!-- Chart -->
+          <section class="d-flex flex-column" id="chartUserSection">
+            <div>
+              <div id="chartCarousel" class="carousel slide carousel-dark" data-bs-ride="carousel">
+                <div class="carousel-inner">
+                  <div class="carousel-item active">
+                    <div class="card">
+                      <div class="container">
+                        <canvas id="chStatus" height="150"></canvas>
+                      </div>
+                    </div>
+                  </div>
+                  <div class="carousel-item">
+                    <div class="card">
+                      <div class="container">
+                        <canvas id="chMeeting" height="150"></canvas>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+                <a class="carousel-control-prev" href="#chartCarousel" role="button" data-bs-slide="prev">
+                  <span><i class="bi bi-arrow-left-circle-fill" id="prevChart"></i></span>
+                </a>
+                <a class="carousel-control-next" href="#chartCarousel" role="button" data-bs-slide="next">
+                  <span><i class="bi bi-arrow-right-circle-fill" id="nextChart"></i></span>
+                </a>
+              </div>
+            </div>
+          </section>
+        </div>
+      </div>
+    </section>
+
+    <!-- JQuery CDN -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.7.1/jquery.js"></script>
+
+    <!-- Bootstrap Bundle with Popper -->
+    <script
+      src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js"
+      integrity="sha384-MrcW6ZMFYlzcLA8Nl+NtUVF0sA7MsXsP1UyJoMp4YLEuNSfAP+JcXn/tWtIaxVXM"
+      crossorigin="anonymous"
+    ></script>
+
+    <!-- FullCalendar JS -->
+    <script src="https://cdn.jsdelivr.net/npm/moment@2.29.1/moment.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/fullcalendar@6.1.9/index.global.min.js"></script>
+
+    <!-- Chart -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.9.4/Chart.js"></script>
+
+    <!-- Custom JS -->
+    <!-- Add SCRF token -->
+    <script th:src="@{/js/addCsrfToken.js}"></script>
+    <script th:src="@{/js/dashboard.js}"></script>
+  </body>
+</html>

@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout">
+  <head layout:include="fragment/head.html::custom-head"> </head>
+  <body>
+    <header layout:replace="fragment/navbar-admin::navbar-admin"></header>
+    <div class="flex-column mt-2" id="cStatus">
+      <p class="title-chart mb-2">Status</p>
+      <div class="d-flex justify-content-around mb-4">
+        <div class="col-3" id="pieChartOnline">
+          <canvas id="pieOnline" height="150"></canvas>
+        </div>
+        <div class="col-4" id="lineChartStatus">
+          <canvas id="lineStatus" height="100"></canvas>
+        </div>
+        <div class="col-3" id="pieChartStatus">
+          <canvas id="pieStatus" height="150"></canvas>
+        </div>
+      </div>
+    </div>
+
+    <div class="d-flex justify-content-around">
+      <div class="col-5" id="lineChartMonth">
+        <p class="title-chart">Schedule/Month</p>
+        <canvas id="lineMonth"></canvas>
+      </div>
+      <div class="col-6" id="chartRoomAdmin">
+        <p class="title-chart">Schedule/Room</p>
+        <canvas id="chRoom"></canvas>
+      </div>
+    </div>
+
+    <!-- JQuery CDN -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.7.1/jquery.js"></script>
+
+    <!-- Bootstrap Bundle with Popper -->
+    <script
+      src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js"
+      integrity="sha384-MrcW6ZMFYlzcLA8Nl+NtUVF0sA7MsXsP1UyJoMp4YLEuNSfAP+JcXn/tWtIaxVXM"
+      crossorigin="anonymous"
+    ></script>
+
+    <!-- Chart -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.9.4/Chart.js"></script>
+
+    <!-- Custom JS -->
+    <script th:src="@{/js/statistic-admin.js}"></script>
+  </body>
+</html>

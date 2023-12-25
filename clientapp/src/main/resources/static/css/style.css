@@ -1,0 +1,160 @@
+@import url("https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700&display=swap");
+@import url("https://fonts.googleapis.com/css2?family=Bodoni+Moda:opsz@6..96&family=Krona+One&display=swap");
+
+* {
+  font-family: "Poppins", sans-serif;
+}
+
+.navbar-brand {
+  width: 6rem;
+  margin-left: 1rem;
+  font-size: medium;
+  color: #161616;
+  font-family: "Krona One", sans-serif;
+  text-align: center;
+  text-wrap: wrap;
+  line-height: normal;
+  font-weight: bold;
+}
+
+#body-login {
+  background: linear-gradient(180deg, rgba(100, 92, 187, 0.56) 24.08%, rgba(193, 170, 235, 0) 100%);
+  flex-shrink: 0;
+  min-height: 100vh;
+  background-size: cover;
+}
+
+#section-login {
+  display: grid;
+  justify-content: center;
+}
+
+#img-login {
+  height: 60vh;
+  margin-top: 6em;
+  justify-self: center;
+}
+
+#typewriter {
+  margin-top: 1em;
+  text-align: center;
+  font-family: "Krona One", sans-serif;
+}
+
+#typewriter::after {
+  content: "|";
+  animation: blink 0.7s infinite alternate;
+  color: #645cbb;
+}
+
+@keyframes blink {
+  0% {
+    opacity: 1;
+  }
+  40% {
+    opacity: 1;
+  }
+  60% {
+    opacity: 0;
+  }
+  100% {
+    opacity: 0;
+  }
+}
+
+.button-login {
+  width: 150px;
+  height: 45px;
+  background: transparent;
+  border: 2px solid black;
+  outline: none;
+  border-radius: 30px;
+  cursor: pointer;
+  color: black;
+  transition: 0.5s;
+  margin-right: 1em;
+  margin-bottom: 1em;
+  font-family: "Krona One", sans-serif;
+  font-size: 15px;
+}
+
+.button-login:hover {
+  background: #645cbb;
+  color: white;
+}
+
+.login-modal {
+  background: rgba(100, 92, 187, 0.4);
+  backdrop-filter: blur(10px);
+  color: white;
+  margin-top: 5em;
+  border-radius: 30px;
+}
+
+.btn-modal-login {
+  width: 600px;
+  background-color: #bface2;
+  font-family: "Manrope", sans-serif;
+  font-size: large;
+  font-weight: 600;
+  border-radius: 30px;
+}
+
+.btn-modal-login:hover {
+  background-color: #47326e;
+  border: 2px solid rgb(163, 163, 163);
+  color: white;
+}
+
+.dropdown-button {
+  background-color: rgba(206, 188, 238, 0.65);
+  color: #161616;
+  border-radius: 40px;
+  border: none;
+  font-family: "Manrope", sans-serif;
+  margin-right: 1em;
+  height: 50px;
+  width: 150px;
+}
+
+.dropdown-button:hover {
+  border: 2px solid #47326e;
+  background: none;
+  color: #47326e;
+}
+
+.dropdown-button:focus {
+  background-color: rgba(206, 188, 238, 0.65);
+  color: #161616;
+}
+
+.dropdown-menu {
+  border-radius: 10px;
+  border: 1px solid #8d8d8d;
+  background: rgba(206, 188, 238, 0.4);
+  padding-left: 15px;
+  padding-right: 10px;
+}
+
+.menu-profile:hover,
+.nav-item:hover {
+  border-bottom: 3px solid #47326e;
+  background: none;
+  color: #161616;
+}
+
+div > ul .active {
+  height: 50px;
+  padding-left: 10px;
+  padding-right: 10px;
+  background-color: #bface2;
+  font-weight: bolder;
+}
+
+div > ul .active a {
+  color: rgb(0, 0, 0);
+}
+
+#forgot-password {
+  color: white;
+}

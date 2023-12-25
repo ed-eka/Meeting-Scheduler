@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout">
+
+<head layout:include="fragment/head.html::custom-head">
+    
+</head>
+
+<body>
+    <div id="calendar-meeting">
+        <div class="calendar-header">
+            <a href="#" id="prevMonth" class="calendar-icon"><i class="fas fa-chevron-left"></i></a>
+            <h2 id="currentMonthYear"></h2>
+            <a href="#" id="nextMonth" class="calendar-icon"><i class="fas fa-chevron-right"></i></a>
+        </div>
+        <table class="calendar-table">
+            <!-- Tampilkan hari-hari dalam satu minggu -->
+            <tr class="calendar-day">
+                <th>Sun</th>
+                <th>Mon</th>
+                <th>Tue</th>
+                <th>Wed</th>
+                <th>Thu</th>
+                <th>Fri</th>
+                <th>Sat</th>
+            </tr>
+            <!-- Isi kalender akan ditampilkan di sini -->
+        </table>
+    </div>
+    <script src="/clientapp/src/main/resources/static/js/calendarMeeting.js"></script>
+</body>
+
+</html>

@@ -1,0 +1,131 @@
+#body-dashboard {
+  margin: 7% 0 0 0;
+  background: linear-gradient(180deg, rgba(206, 188, 238, 0.56) 58%, rgba(192.96, 170.24, 234.81, 0) 100%);
+  width: 100%;
+}
+
+#calendar-dashboard {
+  background: #ffffff;
+  border-radius: 18px;
+  font-size: 12px;
+}
+
+.fc-event {
+  font-size: 10px;
+}
+
+.fc-border-color {
+  color: #7a0000;
+}
+
+.status-item {
+  border-radius: 10px;
+  padding: 10px;
+  width: 18%;
+  font-size: 12px;
+}
+
+#scheduled {
+  background: #ffdeb4;
+}
+#start {
+  background: #c0deff;
+}
+#end {
+  background: #fff8e1;
+}
+#canceled {
+  background: #ffb4b4;
+}
+
+#card-status {
+  background: #645cbb;
+  border-radius: 18px;
+  padding: 15px 0 15px 0;
+}
+
+#card-schedule {
+  background: #ffffff;
+  padding: 40px 30px 10px 30px;
+  border-radius: 20px;
+}
+
+.title {
+  color: #252525;
+  font-size: 20px;
+  font-weight: 700;
+}
+
+.title-chart {
+  color: #252525;
+  font-size: 20px;
+  font-weight: 700;
+  text-align: center;
+  margin-bottom: 40px;
+}
+
+#cardMeeting {
+  margin-top: 10px;
+  background: #c2d9ff;
+  border-color: #c2d9ff;
+  border-radius: 18px;
+}
+
+#card-statistic {
+  width: 100%;
+  background: white;
+  border-radius: 18px;
+  padding: 10px 10px 10px 10px;
+}
+
+#badge-status {
+  background: #190482;
+  color: white;
+  border-radius: 10px;
+  height: fit-content;
+  padding: 6px;
+}
+
+#txt-date-schedule {
+  font-size: small;
+  margin-bottom: 20px;
+}
+
+/* Chart */
+#filter {
+  width: 100%;
+  display: flex;
+  justify-content: end;
+  margin-bottom: 20px;
+}
+
+#dropdown-filter {
+  width: 40%;
+  height: 40px;
+  background: #6272f0;
+  border-color: #6272f0;
+  color: white;
+  border-radius: 18px;
+  box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);
+}
+
+#dropdown-filter option {
+  background: #fff;
+  color: black;
+}
+
+#chart-room-admin {
+  width: 95%;
+  background: #ffffff;
+  border-radius: 18px;
+  margin: 10px 0 5px 40px;
+  padding: 20px 30px 10px 30px;
+}
+
+.carousel-control-prev,
+.carousel-control-next,
+.carousel-control-prev:hover,
+.carousel-control-next:hover {
+  color: black;
+  font-size: 25px;
+}

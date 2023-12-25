@@ -1,0 +1,52 @@
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  /* border: 1px solid black; */
+  font-family: "Segoe UI", Tahoma, Geneva, Verdana, sans-serif;
+}
+
+/* Tambahkan font Awesome CSS */
+.calendar-icon {
+  text-decoration: none;
+  font-size: small;
+  margin: 0 10px;
+  color: #333;
+}
+
+.calendar-header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  margin-bottom: 0.5rem;
+}
+
+#calendar-meeting {
+  width: max-content;
+}
+
+.calendar-table {
+  margin: auto;
+}
+
+.calendar-table tr {
+  text-align: center;
+}
+
+.calendar-table tr th {
+  padding: 0.1rem;
+}
+
+.calendar-day {
+  font-size: small;
+}
+
+#currentMonthYear {
+  font-size: medium;
+}
+
+/* Tampilan tanggal hari ini */
+.today {
+  font-weight: bold;
+  background-color: #a9a9a9;
+}

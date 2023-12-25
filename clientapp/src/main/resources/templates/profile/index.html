@@ -1,0 +1,75 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <!-- Bootstrap CSS -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-T3c6CoIi6uLrA9TneNEoa7RxnatzjcDSCmG1MXxSR1GAsXEV/Dwwykc2MPK8M2HN" crossorigin="anonymous">
+
+    <!-- DataTables CSS -->
+    <link rel="stylesheet" href="https://cdn.datatables.net/1.13.6/css/jquery.dataTables.css" />
+    <title>Person</title>
+</head>
+<body>
+
+    <div th:replace="fragment/navbar :: navbar"></div>
+
+    <!-- Body Start -->
+
+    <section class="d-flex flex-wrap flex-column justify-content-center align-content-center border border-black">
+        <div class="container-fluid border border-black">
+            <div class="row justify-content-evenly">
+            
+                <!-- Mini Profile -->
+                <div class="col-4 card border border-black" style="width: 20rem;">
+                    <img
+                        loading="lazy"
+                        src="https://cdn.builder.io/api/v1/image/assets/TEMP/6b91d95e-ec1a-49bb-9b7a-afd96914641d?"
+                        class="img"
+                     />
+                    <div class="card-body text-center">
+                        <div>John Doe</div>
+                        <div style="font-size: smaller;">Admin</div>
+                    </div>
+    
+                    <!-- Edit Profile Button -->
+                    <button type="button" class="container btn btn-primary">Edit Profile</button>
+                </div>
+    
+                <!-- Profile Detail -->
+                <div class="col-6 border border-black">
+                    <div class="">
+                        <div class="">Username</div>
+                        <div class="">JohnDoe</div>
+                        <div class="">Email</div>
+                        <div class="">john.doe@company.com</div>
+                        <div class="">Phone Number</div>
+                        <div class="">+6281234567890</div>
+                        <div class="">Address</div>
+                        <div class="">
+                            Jl. Selokan Ciliwung, RT 20/RW 4, Jakarta Utara
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Body End -->
+
+    <!-- jQuery JS -->
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.7.1/jquery.min.js"></script>
+
+    <!-- DataTables JS -->
+    <script src="https://cdn.datatables.net/1.13.6/js/jquery.dataTables.js"></script>    
+
+    <!-- Bootstrap + Popper JS -->
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js" integrity="sha384-C6RzsynM9kWDrMNeT87bh95OGNyZPhcTNXj1NW7RuBCsyN/o0jlpcV8Qyq46cDfL" crossorigin="anonymous"></script>
+
+    <!-- SweetAlert JS -->
+    <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+
+    <!-- Insert other JS Script here -->
+</body>
+</html>

@@ -1,0 +1,105 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout">
+  <head layout:include="fragment/head.html::custom-head"> </head>
+  <body>
+    <header layout:replace="fragment/navbar-admin::navbar-admin"></header>
+    <div class="box">
+      <div class="main-container">
+        <div class="content">
+          <section class="button-meeting">
+            <a class="button-meeting-action" th:href="@{/meeting/create}">
+              <i class="fa-solid fa-calendar-plus"></i>
+              Schedule a Meeting
+            </a>
+            <!-- <a class="button-meeting-action" href="update-form.html">
+              <i class="fa-solid fa-calendar-check"></i> Edit a Coming Meeting
+            </a> -->
+          </section>
+          <hr />
+          <h2 class="fs-bold">My Meeting</h2>
+          <a class="view-all-meeting" th:href="@{meeting/meeting-list}">View all meeting</a>
+
+          <section class="meeting-detail-overview">
+            <div class="meeting-overview-left">
+              <span>Meeting Date</span>
+              <br />
+              <span>Meeting Title</span>
+              <div class="data-inline">
+                <i class="fa-solid fa-location-dot"></i>
+                <span>Location</span>
+              </div>
+              <div class="data-inline">
+                <i class="fa-solid fa-clock"></i>
+                <span>Time</span>
+              </div>
+              <div class="data-inline">
+                <i class="fa-solid fa-users"></i>
+                <span>Participants</span>
+              </div>
+            </div>
+
+            <div class="meeting-overview-right">
+              <a href="#">View meeting</a>
+            </div>
+          </section>
+        </div>
+      </div>
+
+      <div class="calendar-container">
+        <div id="calendar-meeting">
+          <div class="calendar-header">
+            <a href="#" id="prevMonth" class="calendar-icon"><i class="fas fa-chevron-left"></i></a>
+            <h2 id="currentMonthYear"></h2>
+            <a href="#" id="nextMonth" class="calendar-icon"><i class="fas fa-chevron-right"></i></a>
+          </div>
+          <table class="calendar-table">
+            <!-- Tampilkan hari-hari dalam satu minggu -->
+            <tr class="calendar-day">
+              <th>Sun</th>
+              <th>Mon</th>
+              <th>Tue</th>
+              <th>Wed</th>
+              <th>Thu</th>
+              <th>Fri</th>
+              <th>Sat</th>
+            </tr>
+            <!-- Isi kalender akan ditampilkan di sini -->
+          </table>
+        </div>
+      </div>
+    </div>
+
+    <!--Menambahkan Liblary JQuery CDN-->
+
+    <script
+      src="https://code.jquery.com/jquery-3.7.1.js"
+      integrity="sha256-eKhayi8LEQwp4NKxN+CfCh+3qOVUtJn3QNZ0TciWLP4="
+      crossorigin="anonymous"
+    ></script>
+    <script src="https://kit.fontawesome.com/a41c16aeaf.js" crossorigin="anonymous"></script>
+
+    <!--Data Tables CDN-->
+    <script src="https://cdn.datatables.net/1.13.6/js/jquery.dataTables.js"></script>
+
+    <!-- Optional JavaScript; choose one of the two! -->
+
+    <!-- Option 1: Bootstrap Bundle with Popper -->
+    <script
+      src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js"
+      integrity="sha384-MrcW6ZMFYlzcLA8Nl+NtUVF0sA7MsXsP1UyJoMp4YLEuNSfAP+JcXn/tWtIaxVXM"
+      crossorigin="anonymous"
+    ></script>
+
+    <!--SweatAlert CDN-->
+    <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+
+    <script th:src="@{/js/meeting.js}"></script>
+    <script th:src="@{/js/calendarMeeting.js}"></script>
+    <script th:src="@{/js/addCsrfToken.js}"></script>
+  </body>
+</html>
+
+
+
+
+<!---->

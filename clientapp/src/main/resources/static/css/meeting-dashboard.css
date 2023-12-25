@@ -1,0 +1,259 @@
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  /* border: 1px solid black; */
+  color: black;
+  font-family: "Lucida Sans", "Lucida Sans Regular", "Lucida Grande", "Lucida Sans Unicode", Geneva, Verdana, sans-serif;
+}
+
+a {
+  text-decoration: none;
+  color: black;
+}
+
+body {
+  width: 100%;
+  min-height: 100vh;
+  height: 100%;
+}
+
+.box {
+  display: flex;
+  height: 100%;
+  width: 100%;
+  background: linear-gradient(180deg, rgba(206, 188, 238, 0.35) 33.85%, rgba(193, 170, 235, 0) 100%);
+}
+
+.calendar-container {
+  width: max-content;
+  padding: 1rem;
+  background-color: #a084dc;
+  min-height: 100vh;
+}
+
+.content {
+  margin: auto;
+  max-width: 800px;
+}
+
+#calendar-meeting-dashboard {
+  background-color: white;
+  padding: 1rem;
+  border-radius: 0.4rem;
+}
+
+.main-container {
+  width: 100%;
+  padding: 2rem 2rem;
+}
+
+h2 {
+  text-align: center;
+  font-size: 1.2rem;
+  font-weight: bold;
+}
+
+.button-meeting {
+  margin-bottom: 2rem;
+}
+
+.button-meeting i {
+  margin: 0 0.5rem;
+}
+
+.button-meeting-action {
+  display: block;
+  flex-direction: row;
+  padding: 1rem 1rem;
+  border: 1px solid purple;
+  border-radius: 0.4rem;
+  margin-bottom: 0.5rem;
+  background-color: #fbf9fe;
+  font-weight: 500;
+}
+
+.view-all-meeting {
+  font-size: smaller;
+  font-weight: 600;
+  display: block;
+  text-align: end;
+  margin-bottom: 1rem;
+}
+
+.meeting-data {
+  margin-left: 0.5rem;
+}
+
+.meeting-data i {
+  width: 2rem;
+  text-align: center;
+}
+
+.block {
+  display: block;
+}
+.pl2 {
+  padding-left: 2.4rem;
+}
+
+.meeting-detail-overview {
+  font-size: 1rem;
+  border: 1px solid purple;
+  border-radius: 0.4rem;
+  display: flex;
+  width: 100%;
+  padding: 1rem;
+  background-color: #fbf9fe;
+  border: none;
+  margin-bottom: 10px;
+}
+
+.meeting-overview-left {
+  width: 100%;
+  font-weight: 500;
+}
+
+.meeting-overview-right {
+  min-width: max-content;
+}
+
+/* --------------Meeting Form ------------- */
+.flex {
+  display: flex;
+}
+
+.content-form {
+  margin: auto;
+  max-width: 800px;
+  display: flex;
+  flex-direction: column;
+}
+
+.checkbox {
+  padding-right: 2rem;
+}
+
+.add-participant {
+  display: flex;
+  justify-content: space-between;
+  width: 100%;
+  align-items: flex-end;
+}
+
+.add-participant label {
+  width: 30%;
+}
+
+.add-participant label {
+  display: flex;
+  flex-direction: column;
+}
+
+input,
+textarea {
+  padding-top: 2px;
+  padding-bottom: 2px;
+  padding-left: 10px;
+  padding-right: 10px;
+  border-radius: 5px;
+  border: 0.5px solid grey;
+}
+
+.delete-btn {
+  background-color: transparent;
+  border: none;
+}
+
+.meeting-list-box {
+  width: 80vw;
+  margin: auto;
+  min-height: 100vh;
+  height: 100%;
+  padding: 2rem 0;
+}
+
+.Meeting-header {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.justify-align-center {
+  justify-content: center;
+  align-items: center;
+}
+
+.Meeting-list-container {
+  margin-top: 2rem;
+  border: 1px solid rgba(217, 217, 217, 0.9);
+  border-radius: 10px;
+  padding: 1rem;
+  min-height: 80vh;
+}
+
+.meeting-overview-detail {
+  width: 100%;
+  font-weight: 500;
+}
+
+.meeting-overview-status {
+  padding: 0 1rem;
+  width: 20%;
+}
+
+.meeting-overview-action button {
+  width: 100%;
+  margin-bottom: 1rem;
+  padding: 5px;
+  border-radius: 5px;
+  font-size: 0.8rem;
+  font-weight: 500;
+  border: 1px solid purple;
+  background-color: white;
+}
+
+.meeting-overview-action button:hover {
+  background-color: #a084dc;
+  color: white;
+  border: 1px solid #a084dc;
+}
+
+/* -------- Meeting Detail ---------- */
+.meeting-detail-box {
+  max-width: 800px;
+  margin: auto;
+}
+
+.grid-container {
+  display: grid;
+  grid-template-columns: 4fr 1fr 7fr;
+  gap: 5px;
+  align-items: start;
+}
+
+.grid-item {
+  padding: 10px;
+  border: none;
+  text-align: start;
+}
+
+.full-width {
+  grid-column: 1 / 4; /* Menggabungkan elemen agar mencakup 3 kolom penuh */
+}
+
+.participant-name-status {
+  display: grid;
+  grid-template-columns: 4fr 1fr 7fr;
+  gap: 5px;
+  align-items: start;
+}
+
+.participant-name-status div {
+  padding: 0 10px;
+}
+
+.participant-name {
+  padding-left: 2.5rem !important;
+}
